@@ -1,0 +1,28 @@
+name: JumpCloud Group Membership Sync
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  python-test:
+    runs-on:
+      - ubuntu-latest
+    steps:
+      # Checkout the repository
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      # Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Run the Python script directly within the workflow
+      - name: Run Python Hello World
+        run: |
+          echo 'print("Hello, World!")' > hello_world.py
+          python hello_world.py
